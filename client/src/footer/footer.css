@@ -1,0 +1,50 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #d9d9d9;
+  margin-top: 70px;
+}
+.ufooter {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 90px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.nets {
+  display: flex;
+  flex-direction: row;
+  gap: 9px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 50px;
+}
+.logo4z {
+  margin-left: 50px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.instagram {
+  width: 39px;
+  height: 39px;
+  display: flex;
+  color: black;
+}
+.telegram {
+  width: 39px;
+  height: 39px;
+  display: flex;
+  color: black;
+}
+/* .line4z{
+    height: 3px;
+    width: 100vw;
+    background-color: #1363DF;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0px;
+} */

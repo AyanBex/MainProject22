@@ -1,0 +1,14 @@
+@import url('hhttps://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet');
+
+* {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  color: black;
+  max-width: 1920px;
+}
+body {
+  background-image: linear-gradient(
+    rgba(244, 245, 245, 1),
+    rgba(244, 245, 245, 1)
+  );
+}
