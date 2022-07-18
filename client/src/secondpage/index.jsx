@@ -1,7 +1,6 @@
 import "./navbar2.css";
 import { useState, useEffect } from "react";
 import { items } from "../actions/user";
-import { saveAs } from "file-saver";
 import { DefaultContext } from "../Context";
 import { useContext } from "react";
 import { useNavigate } from "react-router";
@@ -12,31 +11,27 @@ const SecondPage = () => {
   const navigate = useNavigate();
   const [images, setImages] = useState();
   const [imagesFilter, setImagesFilter] = useState();
-  const [downloadImage, setDownloadImage] = useState();
   const { setTitle } = useContext(DefaultContext);
 
   useEffect(() => {
     items().then((response) => {
       setImages(response);
       setImagesFilter(response);
-      setDownloadImage(response);
     });
   }, []);
-
-  console.log(images);
 
   const FilterCategory = (ind) => {
     let arr = [];
     let typer = buttons[ind];
-    if (ind == 0) {
+    if (ind === 0) {
       images.forEach((element) => {
-        if (element.type == "Обложка") {
+        if (element.type === "Обложка") {
           arr.push(element);
         }
       });
     } else {
       images.forEach((element) => {
-        if (element.category == typer && element.type == "Обложка") {
+        if (element.category === typer && element.type === "Обложка") {
           arr.push(element);
         }
       });
@@ -44,28 +39,28 @@ const SecondPage = () => {
     setImagesFilter(arr);
   };
 
-  const ImageUploader = (ind) => {
-    let arr = [];
-    console.log("hey");
-    let type = titles[ind];
+  // const ImageUploader = (ind) => {
+  //   let arr = [];
+  //   console.log("hey");
+  //   let type = titles[ind];
 
-    images.forEach((element) => {
-      if (element.title == type) {
-        console.log("Get");
-        saveAs(element.image, "image.jpg");
-      }
-    });
+  //   images.forEach((element) => {
+  //     if (element.title == type) {
+  //       console.log("Get");
+  //       saveAs(element.image, "image.jpg");
+  //     }
+  //   });
 
-    setDownloadImage(arr);
-  };
+  //   setDownloadImage(arr);
+  // };
 
   const handleTitle = (titleTemplate) => {
-    setTitle(images.filter(image => image.title === titleTemplate));
-    navigate('/content')
-  }
+    setTitle(images.filter((image) => image.title === titleTemplate));
+    navigate("/content");
+  };
 
   // const [title, setTitle] = useState();
-  const titles = ["Белый Шымкентский", "Черный Астанчанин", "Красный огурец"];
+  // const titles = ["Тёмный лорд", "Синий огурец", "Зебровый пончик"];
   const buttons = ["Все", "Бизнес", "Творчество", "Блог"];
 
   return (
@@ -101,10 +96,14 @@ const SecondPage = () => {
         {images ? (
           <>
             {imagesFilter.map((item, index) => {
-              return item.type == "Обложка" ? (
+              return item.type === "Обложка" ? (
                 <div key={index} className="subproduct1">
                   <div className="page1">
-                    <div className="el1" onClick={() => handleTitle(item.title)}>
+                    {console.log(item)}
+                    <div
+                      className="el1"
+                      onClick={() => handleTitle(item.title)}
+                    >
                       <a>
                         <img
                           className="iproduct1"

@@ -6,7 +6,7 @@ import { useContext } from "react";
 
 const Navbar = () => {
   const { isAuth } = useContext(DefaultContext);
-  
+
   return (
     <div className="navbar">
       <a href="/" className="logo">
@@ -16,28 +16,29 @@ const Navbar = () => {
         <a href="/catalog" className="a1">
           Шаблоны
         </a>
-        <a href="/action" className="a1">
+        <a href="/catalog" className="a1">
           Категории
         </a>
         <a href="/comm" className="a1">
           Цены
         </a>
       </div>
-      {!isAuth ?
+      {!isAuth ? (
         <div className="links2">
-        <a className="login" href="/login">
-          Войти
-        </a>
-        <a className="button" href="/registration">
-          Регистрация
-        </a>
-      </div> : 
-      <div className="links2">
-        <a className="login" href="/[profile]">
-          Профиль
-        </a>
-      </div>
-      }
+          <a className="login" href="/login">
+            Войти
+          </a>
+          <a className="button" href="/registration">
+            Регистрация
+          </a>
+        </div>
+      ) : (
+        <div className="links2">
+          <a className="login" href="/[profile]">
+            Профиль
+          </a>
+        </div>
+      )}
     </div>
   );
 };

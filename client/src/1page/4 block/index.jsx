@@ -32,7 +32,7 @@ const Home4 = () => {
           />
         </div>
         <div className="subhead4z1">
-          <a href="http://localhost:4000/" className="button2">
+          <a href="/catalog" className="button2">
             Создать дизайн
           </a>
         </div>

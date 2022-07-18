@@ -29,7 +29,7 @@ const Home2 = () => {
               src={require("../../imgs/bulb opacity.png")}
             />
           </div>
-          <div className="card2">
+          <div className="card1">
             <a href="/stories" className="c2">
               Создание<br></br>сторисов
             </a>
@@ -44,7 +44,7 @@ const Home2 = () => {
               src={require("../../imgs/lamp opacity.png")}
             />
           </div>
-          <div className="card3">
+          <div className="card1">
             <a href="/stories" className="c2">
               Обложки<br></br>для highlights
             </a>
@@ -65,7 +65,7 @@ const Home2 = () => {
           </div>
         </div>
         <div className="subhead2">
-          <a href="http://localhost:4000/" className="button2">
+          <a href="/catalog" className="button2">
             Создать дизайн
           </a>
           <div className="line"></div>
