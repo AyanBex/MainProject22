@@ -33,7 +33,7 @@ export const login = async (email, password, handleSetIsAuth) => {
 export const items = async () => {
   try {
     const response = await axios.get("http://localhost:1500/api/auth/items");
-    console.log("Got items succesfully!");
+    console.log("Got items succesfully!", response.data);
     return response.data;
   } catch (e) {
     alert(e.response.data.message);

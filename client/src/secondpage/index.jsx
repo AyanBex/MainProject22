@@ -11,15 +11,32 @@ const SecondPage = () => {
   const navigate = useNavigate();
   const [images, setImages] = useState();
   const [imagesFilter, setImagesFilter] = useState();
+  const [seacrhImage, setSearchImage] = useState();
   const { setTitle } = useContext(DefaultContext);
 
   useEffect(() => {
     items().then((response) => {
       setImages(response);
       setImagesFilter(response);
+      setSearchImage(response);
     });
   }, []);
 
+  const SearchInput = () => {
+    let arr = [];
+    if (seacrhImage == "") {
+      images.forEach((element) => {
+        arr.push(element);
+      });
+    } else {
+      images.forEach((element) => {
+        if (element.title.toLowerCase().includes(seacrhImage.toLowerCase())) {
+          arr.push(element);
+        }
+      });
+    }
+    setSearchImage(arr);
+  };
   const FilterCategory = (ind) => {
     let arr = [];
     let typer = buttons[ind];
@@ -67,11 +84,21 @@ const SecondPage = () => {
     <div className="secondpage">
       <div className="searcher">
         <form className="SecPageForm">
-          <input
-            className="SecPageInput"
-            name="search"
-            placeholder="Поиск категорий"
-          />
+          <div className="SecPageInput">
+            {images.map((item, index) => {
+              return (
+                <input
+                  key={index}
+                  type="text"
+                  name="search"
+                  placeholder="Поиск категорий"
+                  onChange={() => {
+                    SearchInput(index);
+                  }}
+                />
+              );
+            })}
+          </div>
         </form>
         <div className="filterpack">
           <img

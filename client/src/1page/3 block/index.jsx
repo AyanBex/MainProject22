@@ -12,21 +12,71 @@ import "swiper/css/autoplay";
 // jshint ignore:start
 
 const Home3 = () => {
+  const titles = ["Тёмный лорд", "Синий огурец", "Зебровый пончик"];
+
   const [images, setImages] = useState();
+  const [imagesInd, setImagesInd] = useState(0);
+
+  const sliderlist = [
+    {
+      title: "posts",
+      imagelist: [
+        require("../../imgs/post1.jpg"),
+        require("../../imgs/post2.jpg"),
+        require("../../imgs/post3.jpg"),
+        require("../../imgs/post6.jpg"),
+        require("../../imgs/post4.jpg"),
+        require("../../imgs/post5.jpg"),
+      ],
+    },
+    {
+      title: "stories",
+      imagelist: [
+        require("../../imgs/post3.jpg"),
+        require("../../imgs/post2.jpg"),
+        require("../../imgs/post3.jpg"),
+        require("../../imgs/post6.jpg"),
+        require("../../imgs/post4.jpg"),
+        require("../../imgs/post5.jpg"),
+      ],
+    },
+    {
+      title: "highlights",
+      imagelist: [
+        require("../../imgs/post2.jpg"),
+        require("../../imgs/post2.jpg"),
+        require("../../imgs/post3.jpg"),
+        require("../../imgs/post6.jpg"),
+        require("../../imgs/post4.jpg"),
+        require("../../imgs/post5.jpg"),
+      ],
+    },
+  ];
 
   return (
     <div className="home3">
       <div className="third">
         <div className="progressbar">
           <div className="topic">
-            <div className="bu1">Посты</div>
-            <div className="bu2">Сторисы</div>
-            <div className="bu3">Highlights</div>
+            {sliderlist.map((item, index) => (
+              <div
+                className="bu1"
+                key={index}
+                onClick={() => setImagesInd(index)}
+              >
+                {item.title}
+              </div>
+            ))}
           </div>
-          <div className="lines">
-            <div className="line1"></div>
-            <div className="line2"></div>
-            <div className="line3"></div>
+          <div
+            className={
+              imagesInd == 0 ? "lines1" : imagesInd == 1 ? "lines2" : "lines3"
+            }
+          >
+            {sliderlist.map((item, index) => (
+              <div key={index} onClick={() => setImagesInd(index)} />
+            ))}
+            <div className={"line1"} />
           </div>
         </div>
         <img className="image3z1" src={require("../../imgs/loop.png")} />
@@ -36,23 +86,23 @@ const Home3 = () => {
         />
         <div className="slide">
           <Swiper
+            className="swiper"
             // install Swiper modules
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
-            spaceBetween={50}
+            modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+            spaceBetween={15}
             slidesPerView={3}
             navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log("slide change")}
+            autoplay={{ delay: 2000 }}
           >
-            <SwiperSlide>Slide 1</SwiperSlide>
-            <SwiperSlide>Slide 2</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide>
-            ...
+            {sliderlist[imagesInd].imagelist.map((item, index) => (
+              <SwiperSlide key={index}>
+                <img className="slideimage" key={index} src={item} />
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
       </div>

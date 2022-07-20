@@ -30,29 +30,34 @@ const ContentPage = () => {
 
   return (
     <div className="secondpage">
-      <div className="products2">
-        <div className="elements">
+      <div className="catalog">
+        <div className="text">
+          <p className="type">Posts</p>
+        </div>
+        <div className="products2">
           {title ? (
             <>
               {title.map((item, index) =>
                 item.type === "Пост" ? (
                   <div key={index} className="subproduct2">
-                    <p className="type">Posts</p>
-
-                    <div className="page2">
-                      <div className="el1" onClick={() => ImageUploader(index)}>
-                        <a
-                          href="http://localhost:4000/"
-                          target="_blank"
-                          rel="noopener noreferrer"
+                    <div className="content">
+                      <div className="page2">
+                        <div
+                          className="el1"
+                          onClick={() => ImageUploader(index)}
                         >
-                          <img
-                            className="iproduct1"
-                            src={item.image}
-                            alt="template"
-                          />
-                          <p className="stproduct1">{item.subtitle}</p>
-                        </a>
+                          <a
+                            href="http://localhost:4000/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <img
+                              className="iproduct1"
+                              src={item.image}
+                              alt="template"
+                            />
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -65,14 +70,15 @@ const ContentPage = () => {
             <></>
           )}
         </div>
-        <div className="elements2">
+        <div className="text">
+          <p className="type">Stories</p>
+        </div>
+        <div className="products2">
           {title ? (
             <>
               {title.map((item, index) =>
                 item.type === "Сторис" ? (
                   <div key={index} className="subproduct2">
-                    <p className="type">Stories</p>
-
                     <div className="page2">
                       <div className="el1" onClick={() => ImageUploader(index)}>
                         <a
@@ -85,7 +91,6 @@ const ContentPage = () => {
                             src={item.image}
                             alt="template"
                           />
-                          <p className="stproduct1">{item.subtitle}</p>
                         </a>
                       </div>
                     </div>
@@ -99,13 +104,15 @@ const ContentPage = () => {
             <></>
           )}
         </div>
-        <div className="elements2">
+        <div className="text">
+          <p className="type">Highlights</p>
+        </div>
+        <div className="products2">
           {title ? (
             <>
               {title.map((item, index) =>
                 item.type === "Хайлайт" ? (
                   <div key={index} className="subproduct2">
-                    <p className="type">Highlights</p>
                     <div className="page2">
                       <div className="el1" onClick={() => ImageUploader(index)}>
                         <a
@@ -118,7 +125,6 @@ const ContentPage = () => {
                             src={item.image}
                             alt="template"
                           />
-                          <p className="stproduct1">{item.subtitle}</p>
                         </a>
                       </div>
                     </div>
